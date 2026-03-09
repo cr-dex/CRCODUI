@@ -1,0 +1,47 @@
+name: Upload to PyPI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pypi-publish:
+    name: Upload release to PyPI
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    steps:
+      # 1. سحب الكود وملفات dist التي رفعتها
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. إعداد بايثون (نستخدم نسخة واحدة مستقرة لتعمل أداة الرفع فقط)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9" 
+
+      # 3. تثبيت أدوات الرفع وتحديثها
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install twine
+
+      # 4. عملية الرفع
+      # هذا الأمر سيرفع كل ما هو موجود في مجلد dist
+      # سواء كان يدعم 3.8 أو 3.9 أو 3.11، twine سيرفعه كما هو
+      - name: Publish distribution 📦 to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          # التحقق أولاً من وجود المجلد لتجنب الأخطاء
+          if [ -d "dist" ]; then
+            twine upload dist/* --skip-existing --verbose
+          else
+            echo "::error::Directory 'dist' not found. Make sure you pushed the compiled files."
+            exit 1
+          fi
+          
