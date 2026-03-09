@@ -1,0 +1,39 @@
+name: Upload to PyPI
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  pypi-publish:
+    name: Upload Wheel only
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install Twine
+        run: pip install twine
+
+      - name: Publish Wheel to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          # التعديل هنا: نرفع الملفات التي تنتهي بـ .whl فقط
+          if [ -d "dist" ]; then
+            twine upload dist/*.whl --skip-existing --verbose
+          else
+            echo "Error: dist folder not found!"
+            exit 1
+          fi
