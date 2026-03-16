@@ -1,5 +1,5 @@
 # CRCODUI
-![CRCODUI](https://github.com/cr-dex/CRCODUI/CRCODUI.jpg)
+![CRCODUI]([https://raw.githubusercontent.com/cr-dex/CRCODUI/refs/heads/main/CRCODUI.jpg])
 
 ![Version](https://img.shields.io/badge/version-2.0.3-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.6%2B-green.svg)
