@@ -11,20 +11,37 @@ It is a Python library specifically designed to make formatting easier for progr
 هى مكتبة بايثون مصممة خصيصا لتسهيل الديكور على المبرمجين و اختصار الاكواد و غيره من التلوين و الادخال و الاخراج و كل ما يجذب العملاء و يميزك فى عملك
 
 
-## 🚀 Key Features
+## Installation info:
 
-* **Installation info:**
+easy to install ```bash
+pip3.X install CRCODUI
+```
 
-easy to install `pip3.X install CRCODUI`
+or
 
-easy to install ```pip3.X install CRCODUI```
+```bash
+apt install git -y
+git clone https://github.com/cr-dex/CRCODUI
+cd CRCODUI/dist
+pip install crcodui*.whl
+```
 
-Automatically detects and installs missing external packages in the background.
-* **Advanced Console Output (`CONSOLS`):** Displays script contents or raw text in the terminal with clean formatting, line numbers, and syntax highlighting.
-* **Color Gradients (`COLOR`):** Applies professional color gradient effects to terminal outputs.
-* **Code Structuring (`AST`):** Programmatically rebuilds and formats Python files using the Abstract Syntax Tree to ensure clean code.
-* **Built-in CLI (`IN_OUT`):** Flexibly handles execution arguments to define input files, outputs, versions, and run modes.
-* **Environment Injection (`IMPORT`):** Dynamically injects a wide range of standard libraries and popular tools directly into memory for rapid prototyping.
+* **Advanced Console Output (`CONSOLS`):**
+
+Displays script contents or raw text in the terminal with clean formatting, line numbers, and syntax highlighting.
+
+* **Color Gradients (`COLOR`):**
+
+Applies professional color gradient effects to terminal outputs.
+* **Code Structuring (`AST`):**
+
+Programmatically rebuilds and formats Python files using the Abstract Syntax Tree to ensure clean code.
+* **Built-in CLI (`IN_OUT`):**
+
+Flexibly handles execution arguments to define input files, outputs, versions, and run modes.
+* **Environment Injection (`IMPORT`):**
+
+Dynamically injects a wide range of standard libraries and popular tools directly into memory for rapid prototyping.
 
 ---
 
