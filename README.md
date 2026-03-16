@@ -29,43 +29,41 @@ pip install crcodui*.whl
 
 ## 🔧 الدوال الرئيسية
 
-### 1. COLOR() - تطبيق التدرجات اللونية
+### 1. COLOR(text, text2)
 
 **الوظيفة:**
-تطبق تدرجات لونية احترافية على النصوص في المحطة الطرفية.
+تطبق تدرجات لونية عشوائية متناسقة على النصوص في الطرفية ( تحتاج الى print قبلها )
 
 **الاستخدام:**
 ```python
 from CRCODUI import COLOR
 
 # مثال بسيط
-print(COLOR("Welcome to CRCODUI", " - ", "Powered by @cr_dex"))
-
-# تطبيق تدرج لوني على نص
-result = COLOR("Hello World")
-print(result)
+print(COLOR("Welcome","Powered by @cr_dex"))
+او
+print(COLOR("Welcome Powered by @cr_dex"))
+# ستتدرج الجملة Welocome Powerd by @cr_dex بالوان فائقة الجمال
 ```
 
-**الفائدة:**
+**المميزات:**
 - إضافة تأثيرات بصرية احترافية للمخرجات
 - تحسين قراءة وتنسيق النصوص في المحطة الطرفية
-- دعم الألوان المتقدمة والتدرجات
+- دعم الألوان المتقدمة و العشوائبة فى التلوين كل مرة
+- وفر عليك مئات السطور من متغيرات الالوان
 
 ---
 
-### 2. CONSOLE() - عرض محتوى الملفات
-
+### 2. CONSOLE(File)
 **الوظيفة:**
-تعرض محتوى ملفات Python أو النصوص العادية مع ترقيم الأسطر وإبراز الصيغة (Syntax Highlighting).
+تعرض محتوى ملفات Python معSyntax Highlighting و كأنك فى محرر اكواد
+( لا تحتا الى print )
 
 **الاستخدام:**
 ```python
 from CRCODUI import CONSOLE
 
-# عرض محتوى ملف Python
+# عرض محتوى الملف مع تصميم محرر الاكواد
 CONSOLE("my_script.py")
-
-# سيعرض الكود مع ترقيم الأسطر والألوان
 ```
 
 **الفائدة:**
@@ -75,20 +73,24 @@ CONSOLE("my_script.py")
 
 ---
 
-### 3. CONSOLT() - عرض النصوص البرمجية مباشرة
+### 3. CONSOLT(text code)
 
 **الوظيفة:**
-تعرض نصاً برمجياً مباشرة دون الحاجة لملف، مع ترقيم الأسطر والصيغة البصرية.
+تعرض نصاً برمجياً مباشرة بلا الحاجة لحفظه فى ملف حتى نعرضه على عكس CONSOLE التى تحتاج حفظ الكود فى ملف حتى تعرضه
 
 **الاستخدام:**
 ```python
 from CRCODUI import CONSOLT
 
-code_snippet = """def fetch_data():
-    data = {'status': 200, 'msg': 'Success'}
+code_snippet = """
+def fetch_data():
+        data = {
+        'status': 200,
+        'msg': 'Success'
+    }
     return data
-
-print(fetch_data())"""
+print(fetch_data())
+"""
 
 CONSOLT(code_snippet)
 # سيعرض الكود مع التنسيق والألوان
@@ -101,7 +103,7 @@ CONSOLT(code_snippet)
 
 ---
 
-### 4. AST() - تنسيق وتنظيف الأكواد
+### 4. AST(text code)
 
 **الوظيفة:**
 تعيد بناء وتنسيق ملفات Python باستخدام Abstract Syntax Tree، لتصحيح المسافات والتنسيق.
@@ -111,157 +113,96 @@ CONSOLT(code_snippet)
 from CRCODUI import AST
 
 # ملف بكود غير منسق
-messy_code = """def   messy_function  ( a ,  b ) : 
- return   a+b 
+messy_code = """
+import os, sys
+def   messy_function  ( a ,  b ) : 
+ return   a+b
+print ( messy_function ( 5 ,  10 ) )
+"""
+open("code.py", "w").write(messy_code)
 
-print ( messy_function ( 5 ,  10 ) )"""
-
-# حفظ الكود غير المنسق
-with open("messy_script.py", "w") as f:
-    f.write(messy_code)
-
-# تنسيق الملف
-AST("messy_script.py")
-
+AST("code.py") # تم التنسيق بنجاح
+ستجد الكود بالشكل التالى
+import os
+import sys
+def messy_function(a,b):
+    return a + b
+print(messy_function(5, 10))
 # الآن الملف منسق بشكل صحيح
 ```
 
 **الفائدة:**
 - تنسيق تلقائي للأكواس الفوضوية
-- إصلاح المسافات والمحاذاة
-- ضمان اتباع معايير PEP 8
-- توحيد أسلوب الكود
+- إصلاح المسافات والمحاذاة توحيد أسلوب الملفات
 
 ---
 
-### 5. IN_OUT() - معالجة وسائط سطر الأوامر
-
+### 5. IN_OUT(version= الاصدار الحالى)
+عقل الادخال و الاخراج و الاصدار و الوضع
 **الوظيفة:**
-تعالج وسائط سطر الأوامر بمرونة لتحديد ملفات الإدخال والإخراج والإصدار وأوضاع التشغيل.
+من الطرفية بدل التعرض الى ادخال و اخراج و اصدار و وضع
+يمكنك كتابة
+python3 mycode.py input -o output -v 3.X -m any_thing
 
 **الاستخدام:**
 ```python
 from CRCODUI import IN_OUT
 
-# محاكاة وسائط سطر الأوامر
-import sys
-sys.argv = ['main.py', 'input.py', '-o', 'output.py', '-v', '1.0.0', '-m', 'CLI_MODE']
-
 # الحصول على الوسائط
-in_file, out_file, version, mode = IN_OUT(VERSION="1.0.0")
+in_file, out_file, version, mode = IN_OUT(VERSION="3.12")
+print(f"Input File: {in_file}") # input
+print(f"Output File: {out_file}") # output
+print(f"Version: {version}") # 3.12
+print(f"Mode: {mode}") # any_thing
 
-print(f"Input File: {in_file}")
-print(f"Output File: {out_file}")
-print(f"Version: {version}")
-print(f"Mode: {mode}")
+# اما لو كتبت
+in_file, out_file, version, mode = IN_OUT()
+print(f"Version: {version}") # 3.X
+# عدم تحديد الاصدار سيعطيك الاصدار الذى حددته
 ```
 
 **الفائدة:**
-- معالجة وسائط سطر الأوامر بسهولة
-- تحديد الملفات والإعدادات تلقائياً
-- دعم أوضاع تشغيل متعددة
+- معالجة اسطر الادخال و الاخراج بسهولة
+- تحديد اصدارات مخصصة لاجزاء محددة من الكود بكفاءة
+- دعم متغير اخر اسمه m (--mode)- لاى شيء تريده
 
 ---
 
-### 6. IMPORT() - حقن المكتبات ديناميكياً
+### 6. IMPORT() - استدعاءات المكتبات ديناميكياً
 
 **الوظيفة:**
-تحقن مجموعة واسعة من المكتبات المدمجة والشهيرة مباشرة في الذاكرة للنماذج السريعة.
+استدعاءات مجموعة واسعة من المكتبات المدمجة فى بايثون لتقليل اسطر المكاتب
 
 **الاستخدام:**
 ```python
 from CRCODUI import IMPORT
-
-# حقن جميع المكتبات
 IMPORT()
-
-# الآن يمكنك استخدام المكتبات المحقونة مباشرة
-try:
-    # مثال: استخدام rich (إن كانت محقونة)
-    print("المكتبات الشهيرة متاحة الآن!")
-except NameError:
-    pass
+os.system("clear")
+# لا حاجة لكتابة import os
 ```
 
 **الفائدة:**
 - توفير الوقت في الاستيراد اليدوي
 - توفير المكتبات الشهيرة جاهزة للاستخدام
-- تسريع عملية النماذج السريعة (Prototyping)
-
 ---
 
 ### 7. HELP() - عرض المساعدة
 
 **الوظيفة:**
-تعرض معلومات شاملة عن المكتبة والدوال المتاحة.
+تعرض معلومات مختصرة عن المكتبة والدوال المتاحة بها.
 
 **الاستخدام:**
 ```python
 from CRCODUI import HELP
-
-# عرض المساعدة الكاملة
-HELP()
+HELP() # بدون عمل print
 ```
 
 **الفائدة:**
-- الحصول على معلومات شاملة عن المكتبة
-- شرح جميع الدوال والوسائط
+- الحصول على معلومات مختصرة عن المكتبة
 - مرجع سريع أثناء التطوير
 
 ---
 
-## 💡 مثال شامل يجمع كل الدوال
-
-```python
-import os
-import sys
-from CRCODUI import HELP, COLOR, CONSOLE, CONSOLT, AST, IN_OUT, IMPORT
-
-# 1. عرض المساعدة
-HELP()
-
-# 2. طباعة نص ملون
-print(COLOR("Welcome to CRCODUI Library", " - ", "Powered by @cr_dex"))
-
-# 3. حقن المكتبات
-IMPORT()
-
-# 4. معالجة وسائط سطر الأوامر
-sys.argv = ['main.py', 'input.py', '-o', 'output.py', '-v', '1.0.0']
-try:
-    in_file, out_file, ver, mod = IN_OUT(VERSION="1.0.0")
-    print(COLOR("Input: ", str(in_file)))
-    print(COLOR("Output: ", str(out_file)))
-except SystemExit:
-    pass
-
-# 5. عرض كود مباشر
-code_snippet = """def greet(name):
-    return f"Hello, {name}!"
-    
-print(greet("Python"))"""
-CONSOLT(code_snippet)
-
-# 6. تنسيق ملف كود
-messy_code = "def add(a,b):\n return a+b"
-with open("temp.py", "w") as f:
-    f.write(messy_code)
-
-CONSOLE("temp.py")  # عرض قبل التنسيق
-AST("temp.py")      # تنسيق الملف
-CONSOLE("temp.py")  # عرض بعد التنسيق
-
-# تنظيف
-if os.path.exists("temp.py"):
-    os.remove("temp.py")
-```
-
----
-
-## 📄 الترخيص
-
-هذا المشروع مرخص تحت رخصة MIT. يمكنك استخدامه وتعديله وتوزيعه بحرية.
-
 ## 👨‍💻 المطور
 
-تم تطوير هذه المكتبة بواسطة @cr_dex على Telegram. لا تتردد في التواصل للحصول على ملاحظات أو المساهمة.
+تم تطوير هذه المكتبة بواسطة @cr_dex على Telegram. لا تتردد في التواصل للحصول على ملاحظات أو المساهمة.❤️❤️
