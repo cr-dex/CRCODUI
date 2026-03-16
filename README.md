@@ -7,6 +7,7 @@
 **CRCODUI**
 
 It is a Python library specifically designed to make formatting easier for programmers, shorten code, and perform other tasks such as coloring, input, output, and everything else that attracts clients and distinguishes your work.
+
 هى مكتبة بايثون مصممة خصيصا لتسهيل الديكور على المبرمجين و اختصار الاكواد و غيره من التلوين و الادخال و الاخراج و كل ما يجذب العملاء و يميزك فى عملك
 
 
@@ -14,8 +15,9 @@ It is a Python library specifically designed to make formatting easier for progr
 
 * **Installation info:**
 
-easy to install *pip3.X install CRCODUI*
+easy to install `pip3.X install CRCODUI`
 
+easy to install ```pip3.X install CRCODUI```
 
 Automatically detects and installs missing external packages in the background.
 * **Advanced Console Output (`CONSOLS`):** Displays script contents or raw text in the terminal with clean formatting, line numbers, and syntax highlighting.
