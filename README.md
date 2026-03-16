@@ -1,16 +1,18 @@
 # CRCODUI
 
 ![Version](https://img.shields.io/badge/version-2.0.3-blue.svg)
-![Python](https://img.shields.io/badge/python-3.8%2B-green.svg)
+![Python](https://img.shields.io/badge/python-3.6%2B-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-purple.svg)
 
-**CRCODUI** is an advanced utility library designed to accelerate and simplify the development of Python scripts and tools. It provides an integrated environment that automatically manages dependencies, offers enhanced interfaces for text printing and code formatting, and simplifies CLI input management.
-
+**CRCODUI** It is a Python library specifically designed to make formatting easier for programmers, shorten code, and perform other tasks such as coloring, input, output, and everything else that attracts clients and distinguishes your work.
+هى مكتبة بايثون مصممة خصيصا لتسهيل الديكور على المبرمجين و اختصار الاكواد و غيره من التلوين و الادخال و الاخراج و كل ما يجذب العملاء و يميزك فى عملك
 ---
 
 ## 🚀 Key Features
 
-* **Smart Dependency Management:** Automatically detects and installs missing external packages in the background.
+* **Installation info:**
+
+Automatically detects and installs missing external packages in the background.
 * **Advanced Console Output (`CONSOLS`):** Displays script contents or raw text in the terminal with clean formatting, line numbers, and syntax highlighting.
 * **Color Gradients (`COLOR`):** Applies professional color gradient effects to terminal outputs.
 * **Code Structuring (`AST`):** Programmatically rebuilds and formats Python files using the Abstract Syntax Tree to ensure clean code.
