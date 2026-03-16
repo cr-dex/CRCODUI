@@ -4,18 +4,19 @@
 ![Python](https://img.shields.io/badge/python-3.6%2B-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-purple.svg)
 
-**CRCODUI**
+مكتبة Python متخصصة لتسهيل عمليات التنسيق والإخراج والتلوين والإدخال، مما يجعل الكود أقصر وأسهل في الاستخدام.
 
-It is a Python library specifically designed to make formatting easier for programmers, shorten code, and perform other tasks such as coloring, input, output, and everything else that attracts clients and distinguishes your work.
-هى مكتبة بايثون مصممة خصيصا لتسهيل الديكور على المبرمجين و اختصار الاكواد و غيره من التلوين و الادخال و الاخراج و كل ما يجذب العملاء و يميزك فى عملك
+---
 
+## 📦 التثبيت
 
-## Installation info:
+يمكنك تثبيت المكتبة بسهولة باستخدام pip:
 
-easy to install
-```pip3.X install CRCODUI```
+```bash
+pip install CRCODUI
+```
 
-or
+أو الطريقة اليدوية:
 
 ```bash
 apt install git -y
@@ -24,82 +25,243 @@ cd CRCODUI/dist
 pip install crcodui*.whl
 ```
 
-* **Advanced Console Output (`CONSOLS`):**
+---
 
-Displays script contents or raw text in the terminal with clean formatting, line numbers, and syntax highlighting.
+## 🔧 الدوال الرئيسية
 
-* **Color Gradients (`COLOR`):**
+### 1. COLOR() - تطبيق التدرجات اللونية
 
-Applies professional color gradient effects to terminal outputs.
-* **Code Structuring (`AST`):**
+**الوظيفة:**
+تطبق تدرجات لونية احترافية على النصوص في المحطة الطرفية.
 
-Programmatically rebuilds and formats Python files using the Abstract Syntax Tree to ensure clean code.
-* **Built-in CLI (`IN_OUT`):**
+**الاستخدام:**
+```python
+from CRCODUI import COLOR
 
-Flexibly handles execution arguments to define input files, outputs, versions, and run modes.
-* **Environment Injection (`IMPORT`):**
+# مثال بسيط
+print(COLOR("Welcome to CRCODUI", " - ", "Powered by @cr_dex"))
 
-Dynamically injects a wide range of standard libraries and popular tools directly into memory for rapid prototyping.
+# تطبيق تدرج لوني على نص
+result = COLOR("Hello World")
+print(result)
+```
+
+**الفائدة:**
+- إضافة تأثيرات بصرية احترافية للمخرجات
+- تحسين قراءة وتنسيق النصوص في المحطة الطرفية
+- دعم الألوان المتقدمة والتدرجات
 
 ---
 
-## 📦 Installation
+### 2. CONSOLE() - عرض محتوى الملفات
 
-You can install the library and all its dependencies easily via pip:
+**الوظيفة:**
+تعرض محتوى ملفات Python أو النصوص العادية مع ترقيم الأسطر وإبراز الصيغة (Syntax Highlighting).
 
-```bash
-pip install CRCODUI
+**الاستخدام:**
+```python
+from CRCODUI import CONSOLE
 
-💡 Comprehensive Usage Example
-Here is a full example demonstrating how all the components of the library work together seamlessly:
+# عرض محتوى ملف Python
+CONSOLE("my_script.py")
+
+# سيعرض الكود مع ترقيم الأسطر والألوان
+```
+
+**الفائدة:**
+- عرض الأكواد بشكل منسق وسهل القراءة
+- ترقيم تلقائي للأسطر
+- تمييز العناصر البرمجية بالألوان
+
+---
+
+### 3. CONSOLT() - عرض النصوص البرمجية مباشرة
+
+**الوظيفة:**
+تعرض نصاً برمجياً مباشرة دون الحاجة لملف، مع ترقيم الأسطر والصيغة البصرية.
+
+**الاستخدام:**
+```python
+from CRCODUI import CONSOLT
+
+code_snippet = """def fetch_data():
+    data = {'status': 200, 'msg': 'Success'}
+    return data
+
+print(fetch_data())"""
+
+CONSOLT(code_snippet)
+# سيعرض الكود مع التنسيق والألوان
+```
+
+**الفائدة:**
+- عرض مقاطع أكواد صغيرة بشكل احترافي
+- مفيدة للتوثيق والشروحات
+- توضيح الأكواد بسهولة دون إنشاء ملفات
+
+---
+
+### 4. AST() - تنسيق وتنظيف الأكواد
+
+**الوظيفة:**
+تعيد بناء وتنسيق ملفات Python باستخدام Abstract Syntax Tree، لتصحيح المسافات والتنسيق.
+
+**الاستخدام:**
+```python
+from CRCODUI import AST
+
+# ملف بكود غير منسق
+messy_code = """def   messy_function  ( a ,  b ) : 
+ return   a+b 
+
+print ( messy_function ( 5 ,  10 ) )"""
+
+# حفظ الكود غير المنسق
+with open("messy_script.py", "w") as f:
+    f.write(messy_code)
+
+# تنسيق الملف
+AST("messy_script.py")
+
+# الآن الملف منسق بشكل صحيح
+```
+
+**الفائدة:**
+- تنسيق تلقائي للأكواس الفوضوية
+- إصلاح المسافات والمحاذاة
+- ضمان اتباع معايير PEP 8
+- توحيد أسلوب الكود
+
+---
+
+### 5. IN_OUT() - معالجة وسائط سطر الأوامر
+
+**الوظيفة:**
+تعالج وسائط سطر الأوامر بمرونة لتحديد ملفات الإدخال والإخراج والإصدار وأوضاع التشغيل.
+
+**الاستخدام:**
+```python
+from CRCODUI import IN_OUT
+
+# محاكاة وسائط سطر الأوامر
+import sys
+sys.argv = ['main.py', 'input.py', '-o', 'output.py', '-v', '1.0.0', '-m', 'CLI_MODE']
+
+# الحصول على الوسائط
+in_file, out_file, version, mode = IN_OUT(VERSION="1.0.0")
+
+print(f"Input File: {in_file}")
+print(f"Output File: {out_file}")
+print(f"Version: {version}")
+print(f"Mode: {mode}")
+```
+
+**الفائدة:**
+- معالجة وسائط سطر الأوامر بسهولة
+- تحديد الملفات والإعدادات تلقائياً
+- دعم أوضاع تشغيل متعددة
+
+---
+
+### 6. IMPORT() - حقن المكتبات ديناميكياً
+
+**الوظيفة:**
+تحقن مجموعة واسعة من المكتبات المدمجة والشهيرة مباشرة في الذاكرة للنماذج السريعة.
+
+**الاستخدام:**
+```python
+from CRCODUI import IMPORT
+
+# حقن جميع المكتبات
+IMPORT()
+
+# الآن يمكنك استخدام المكتبات المحقونة مباشرة
+try:
+    # مثال: استخدام rich (إن كانت محقونة)
+    print("المكتبات الشهيرة متاحة الآن!")
+except NameError:
+    pass
+```
+
+**الفائدة:**
+- توفير الوقت في الاستيراد اليدوي
+- توفير المكتبات الشهيرة جاهزة للاستخدام
+- تسريع عملية النماذج السريعة (Prototyping)
+
+---
+
+### 7. HELP() - عرض المساعدة
+
+**الوظيفة:**
+تعرض معلومات شاملة عن المكتبة والدوال المتاحة.
+
+**الاستخدام:**
+```python
+from CRCODUI import HELP
+
+# عرض المساعدة الكاملة
+HELP()
+```
+
+**الفائدة:**
+- الحصول على معلومات شاملة عن المكتبة
+- شرح جميع الدوال والوسائط
+- مرجع سريع أثناء التطوير
+
+---
+
+## 💡 مثال شامل يجمع كل الدوال
+
+```python
 import os
 import sys
 from CRCODUI import HELP, COLOR, CONSOLE, CONSOLT, AST, IN_OUT, IMPORT
 
+# 1. عرض المساعدة
 HELP()
 
+# 2. طباعة نص ملون
 print(COLOR("Welcome to CRCODUI Library", " - ", "Powered by @cr_dex"))
 
+# 3. حقن المكتبات
 IMPORT()
 
-try:
-    printt("Rich printt is now injected and available globally!")
-except NameError:
-    pass
-
-sys_args_backup = sys.argv
-sys.argv = ['main.py', 'input_script.py', '-o', 'output_script.py', '-v', '1.0.0', '-m', 'CLI_MODE']
-
+# 4. معالجة وسائط سطر الأوامر
+sys.argv = ['main.py', 'input.py', '-o', 'output.py', '-v', '1.0.0']
 try:
     in_file, out_file, ver, mod = IN_OUT(VERSION="1.0.0")
     print(COLOR("Input: ", str(in_file)))
     print(COLOR("Output: ", str(out_file)))
-    print(COLOR("Version: ", str(ver)))
-    print(COLOR("Mode: ", str(mod)))
 except SystemExit:
     pass
 
-sys.argv = sys_args_backup
-
-code_snippet = "def fetch_data():\n    data = {'status': 200, 'msg': 'Success'}\n    return data\n\nprint(fetch_data())"
+# 5. عرض كود مباشر
+code_snippet = """def greet(name):
+    return f"Hello, {name}!"
+    
+print(greet("Python"))"""
 CONSOLT(code_snippet)
 
-messy_code = "def   messy_function  ( a ,  b ) : \n return   a+b \n\nprint ( messy_function ( 5 ,  10 ) )"
-open("demo_script.py", "w", encoding="utf-8").write(messy_code)
+# 6. تنسيق ملف كود
+messy_code = "def add(a,b):\n return a+b"
+with open("temp.py", "w") as f:
+    f.write(messy_code)
 
-CONSOLE("demo_script.py")
+CONSOLE("temp.py")  # عرض قبل التنسيق
+AST("temp.py")      # تنسيق الملف
+CONSOLE("temp.py")  # عرض بعد التنسيق
 
-AST("demo_script.py")
+# تنظيف
+if os.path.exists("temp.py"):
+    os.remove("temp.py")
+```
 
-CONSOLE("demo_script.py")
+---
 
-if os.path.exists("demo_script.py"):
-    os.remove("demo_script.py")
+## 📄 الترخيص
 
-📄 License
-This project is licensed under the MIT License. You are free to use, modify, and distribute it.
-👨‍💻 Developer
-Designed and developed by @cr_dex on Telegram. Feel free to reach out for feedback or contributions.
+هذا المشروع مرخص تحت رخصة MIT. يمكنك استخدامه وتعديله وتوزيعه بحرية.
 
-هل ترغب في أن أكتب لك ملف `setup.py` اللازم لرفع هذه المكتبة إلى PyPI لكي يتمكن أي شخص من تثبيتها باستخدام `pip install CRCODUI`؟
+## 👨‍💻 المطور
 
+تم تطوير هذه المكتبة بواسطة @cr_dex على Telegram. لا تتردد في التواصل للحصول على ملاحظات أو المساهمة.
